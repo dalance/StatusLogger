@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_output_filename">出力ファイル</string>
+    <string name="label_format_string">フォーマット</string>
+    <string name="label_sample">サンプル</string>
+    <string name="label_append_mode">ファイルに追記する</string>
+    <string name="label_auto_start">起動時に常駐</string>
+    <string name="label_preference">設定</string>
+    <string name="label_service">サービス</string>
+    <string name="toggle_running">起動中</string>
+    <string name="toggle_stop">停止中</string>
+    <string name="label_period">周期[秒]</string>
+    
+</resources>
