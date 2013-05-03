@@ -3,19 +3,24 @@ package org.dyndns.dalance.statuslogger;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class MainActivity extends Activity implements OnCheckedChangeListener{
+public class MainActivity extends Activity implements OnCheckedChangeListener, OnClickListener, TagDialog.SelectListner{
 	private static final String TAG = MainActivity.class.getSimpleName();
 	private SharedPreferences pref;
 	private SharedPreferences.Editor editor;
@@ -43,9 +48,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
 		ToggleButton button1 = (ToggleButton) findViewById(R.id.toggleButtonService); 
 		Switch       button2 = (Switch)       findViewById(R.id.switchAppendMode);
 		Switch       button3 = (Switch)       findViewById(R.id.switchAutoStart);
+		ImageButton  button4 = (ImageButton)  findViewById(R.id.ImageButton1);
         button1.setOnCheckedChangeListener(this);
         button2.setOnCheckedChangeListener(this);
         button3.setOnCheckedChangeListener(this);
+        button4.setOnClickListener(this);
         button1.setChecked(pref.getBoolean("ServiceRunning", false));
         button2.setChecked(pref.getBoolean("AppendMode", false));
         button3.setChecked(pref.getBoolean("AutoStart", false));
@@ -66,7 +73,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
         editText3.addTextChangedListener(listener3);
         Integer period = pref.getInt("Period", 0);
         editText3.setText(period.toString());        
-        
+
         Log.d(TAG, "onCreate");
 	}
 
@@ -107,5 +114,24 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
     			break;
     		}
     	}
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch(view.getId()){
+			case R.id.ImageButton1: {
+				Bundle args = new Bundle();
+				args.putString(TagDialog.TITLE, "ƒ^ƒO‘I‘ð");
+				DialogFragment df = new TagDialog();
+				df.setArguments(args);
+				df.show(getFragmentManager(), "TagDialog");
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void onSelected(String str) {
+		Toast.makeText(this, str, Toast.LENGTH_LONG).show();		
 	}
 }

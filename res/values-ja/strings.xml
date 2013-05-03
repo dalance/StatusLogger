@@ -10,5 +10,6 @@
     <string name="toggle_running">起動中</string>
     <string name="toggle_stop">停止中</string>
     <string name="label_period">周期[秒]</string>
+    <string name="label_tag">タグ</string>
     
 </resources>

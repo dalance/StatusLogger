@@ -13,5 +13,6 @@
     <string name="toggle_running">Running</string>
     <string name="toggle_stop">Stop</string>
     <string name="label_period">Period[second]</string>
+    <string name="label_tag">Tag</string>
 
 </resources>

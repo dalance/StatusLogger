@@ -46,7 +46,7 @@
                 <EditText
                     android:id="@+id/editTextFormatString"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" android:inputType="text"/>
 
                 <ImageButton
                     android:id="@+id/ImageButton1"
@@ -54,9 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="false"
-                    android:background="@android:drawable/btn_default"
+                    android:background="@null"
                     android:baselineAlignBottom="false"
-                    android:contentDescription="TODO"
+                    android:contentDescription="@string/label_tag"
                     android:src="@drawable/tag" />
 
             </TableRow>
