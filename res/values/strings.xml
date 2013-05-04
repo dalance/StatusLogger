@@ -14,5 +14,75 @@
     <string name="toggle_stop">Stop</string>
     <string name="label_period">Period[second]</string>
     <string name="label_tag">Tag</string>
-
+    <string-array name="defined_tags">
+        <item >%[Time]</item>
+        <item >%[Date]</item>
+		<item >%[BatteryStatus]</item>
+		<item >%[BatteryHealth]</item>
+		<item >%[BatteryPlugged]</item>
+		<item >%[BatteryPresent]</item>
+		<item >%[BatteryLevel]</item>
+		<item >%[BatteryScale]</item>
+		<item >%[BatteryVoltage]</item>
+		<item >%[BatteryTemperature]</item>
+		<item >%[BatteryTechnology]</item>
+        <item >%[CdmaAsuLevel]</item>
+		<item >%[CdmaDbm]</item>
+		<item >%[CdmaEcio]</item>
+		<item >%[CdmaLevel]</item>
+		<item >%[EvdoAsuLevel]</item>
+		<item >%[EvdoDbm]</item>
+		<item >%[EvdoEcio]</item>
+		<item >%[EvdoLevel]</item>
+		<item >%[EvdoSnr]</item>
+		<item >%[GsmAsuLevel]</item>
+		<item >%[GsmBitErrorRate]</item>
+		<item >%[GsmDbm]</item>
+		<item >%[GsmLevel]</item>
+		<item >%[GsmSignalStrength]</item>
+        <item >%[LteAsuLevel]</item>
+        <item >%[LteCqi]</item>
+        <item >%[LteDbm]</item>
+        <item >%[LteLevel]</item>
+    	<item >%[LteRsrp]</item>
+        <item >%[LteRsrq]</item>
+        <item >%[LteRssnr]</item>
+        <item >%[LteSignalStrength]</item>
+    </string-array>
+    <string-array name="tag_description">
+        <item >Time</item>
+        <item >Date</item>
+		<item >Battery Status</item>
+		<item >Battery Health</item>
+		<item >Battery Plugged</item>
+		<item >Battery Present</item>
+		<item >Battery Level</item>
+		<item >Battery Scale</item>
+		<item >Battery Voltage</item>
+		<item >Battery Temperature</item>
+		<item >Battery Technology</item>
+        <item >Cdma asu Level</item>
+		<item >Cdma dBm</item>
+		<item >Cdma Ec/Io</item>
+		<item >Cdma Level</item>
+		<item >Evdo asu Level</item>
+		<item >Evdo dBm</item>
+		<item >Evdo Ec/Io</item>
+		<item >Evdo Level</item>
+		<item >Evdo SNR</item>
+		<item >Gsm asu Level</item>
+		<item >Gsm Bit Error Rate</item>
+		<item >Gsm dBm</item>
+		<item >Gsm Level</item>
+		<item >Gsm Signal Strength</item>
+        <item >LTE asu Level</item>
+        <item >LTE CQI</item>
+        <item >LTE dBm</item>
+        <item >LTE Level</item>
+        <item >LTE RSRP</item>
+        <item >LTE RSRQ</item>
+        <item >LTE RSSNR</item>
+        <item >LTE Signal Strength</item>
+    </string-array>
+    	
 </resources>

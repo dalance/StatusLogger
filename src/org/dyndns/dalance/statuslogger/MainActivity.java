@@ -6,18 +6,16 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener, OnClickListener, TagDialog.SelectListner{
@@ -48,7 +46,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		ToggleButton button1 = (ToggleButton) findViewById(R.id.toggleButtonService); 
 		Switch       button2 = (Switch)       findViewById(R.id.switchAppendMode);
 		Switch       button3 = (Switch)       findViewById(R.id.switchAutoStart);
-		ImageButton  button4 = (ImageButton)  findViewById(R.id.ImageButton1);
+		ImageButton  button4 = (ImageButton)  findViewById(R.id.imageButtonTagDialog);
         button1.setOnCheckedChangeListener(this);
         button2.setOnCheckedChangeListener(this);
         button3.setOnCheckedChangeListener(this);
@@ -119,7 +117,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	@Override
 	public void onClick(View view) {
 		switch(view.getId()){
-			case R.id.ImageButton1: {
+			case R.id.imageButtonTagDialog: {
 				Bundle args = new Bundle();
 				args.putString(TagDialog.TITLE, "ƒ^ƒO‘I‘ð");
 				DialogFragment df = new TagDialog();
@@ -132,6 +130,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 
 	@Override
 	public void onSelected(String str) {
-		Toast.makeText(this, str, Toast.LENGTH_LONG).show();		
+		EditText editText = (EditText) findViewById(R.id.editTextFormatString);
+		int start = editText.getSelectionStart();
+		int end = editText.getSelectionEnd();
+		Editable editable = editText.getText();
+		editable.replace( Math.min( start, end ), Math.max( start, end ), str );
+		//Toast.makeText(this, str, Toast.LENGTH_LONG).show();		
 	}
 }

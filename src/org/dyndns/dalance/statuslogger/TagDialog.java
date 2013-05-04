@@ -1,6 +1,5 @@
 package org.dyndns.dalance.statuslogger;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,17 +32,12 @@ public class TagDialog extends DialogFragment {
 	private static String title;
 	static TagDialog.SelectListner listener;
 	static ListView listView;
-	static List<String> strList;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (savedInstanceState==null){
 			title = getArguments().getString(TITLE);
-			strList = new ArrayList<String>();
-			for(String str : LoggerFormatter.KEYWORD) {
-				strList.add(str);
-			}
 		}
 	}
 	
@@ -52,19 +46,23 @@ public class TagDialog extends DialogFragment {
 		LinearLayout layout = new LinearLayout(getActivity());
 		layout.setOrientation(LinearLayout.VERTICAL);
 
+		String[] definedTags = getResources().getStringArray(R.array.defined_tags);
 		listView = new ListView(getActivity());
 		listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-		listView.setAdapter(new ArrayAdapter<String>(getActivity(), 0, LoggerFormatter.KEYWORD){
+		listView.setAdapter(new ArrayAdapter<String>(getActivity(), 0, definedTags){
 			LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			
+			String[] definedTags    = getResources().getStringArray(R.array.defined_tags);
+			String[] tagDescription = getResources().getStringArray(R.array.tag_description);
+				
 			@Override
 			public View getView(int position,View convertView,ViewGroup parent){
 				View view = convertView==null ? inflater.inflate(R.layout.tag_dialog_row, null) : convertView;
-				TextView tv = (TextView)view.findViewById(R.id.textView);
-	            String str = LoggerFormatter.KEYWORD[position];
-	            tv.setText(str);
-	            return view;
-	         }
+				TextView view1 = (TextView)view.findViewById(R.id.textViewTag);
+				view1.setText(definedTags[position]);
+				TextView view2 = (TextView)view.findViewById(R.id.textViewDescription);
+				view2.setText(tagDescription[position]);
+				return view;
+			}
 		});
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 			@Override

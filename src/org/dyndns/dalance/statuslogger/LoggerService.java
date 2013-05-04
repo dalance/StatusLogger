@@ -7,7 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -32,16 +35,25 @@ public class LoggerService extends Service {
 	private SharedPreferences pref;
 	private SharedPreferences.Editor editor;
 	private PendingIntent pendingIntent;
-	private AsyncTask<Context, Void, String> mainTask;
+	
+	public static Boolean isRunning(ActivityManager activityManager) {
+		List<RunningServiceInfo> services = activityManager.getRunningServices(Integer.MAX_VALUE);
+		for (RunningServiceInfo info : services) {
+			if (LoggerService.class.getCanonicalName().equals(info.service.getClassName())) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	@Override
     public void onCreate() {
 		Log.d(TAG, "onCreate");
-    	phoneStateListener = new LoggerPhoneStateListener(this);
-    	alarmManager       = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        telephonyManager   = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);		
-		pref               = PreferenceManager.getDefaultSharedPreferences(this);
-		editor             = pref.edit();
+    	phoneStateListener   = new LoggerPhoneStateListener(this);
+    	alarmManager         = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        telephonyManager     = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);		
+		pref                 = PreferenceManager.getDefaultSharedPreferences(this);
+		editor               = pref.edit();
 
 		Intent i = new Intent();
         i.setClassName("org.dyndns.dalance.statuslogger", "org.dyndns.dalance.statuslogger.LoggerService");
@@ -54,6 +66,31 @@ public class LoggerService extends Service {
         long current = System.currentTimeMillis();
 		Log.d(TAG, "onStartCommand");
 
+		//çƒãNìÆó\ñÒ
+		int period = pref.getInt("Period", 60);
+		Boolean autoStart= pref.getBoolean("AutoStart", false);
+
+        String intentAction = intent.getAction();
+        if(intentAction.equals("start") || intentAction.equals("repeat")){
+            alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + (period*1000), pendingIntent);
+            editor.putBoolean("ServiceRunning", true);
+            editor.commit();
+        }else if(intentAction.equals("stop")){
+            alarmManager.cancel(pendingIntent);
+            editor.putBoolean("ServiceRunning", false);
+            editor.commit();
+        }else if(intentAction.equals("auto_start")){
+        	if(autoStart) {
+                alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + (period*1000), pendingIntent);
+                editor.putBoolean("ServiceRunning", true);
+                editor.commit();
+        	} else {
+        		return START_NOT_STICKY;
+        	}
+        }
+        Log.d(TAG, "onStartCommandFinish: " + ( System.currentTimeMillis() - current) );
+
+
         //èàóùñ{ëÃ
     	telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
         telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
@@ -61,8 +98,9 @@ public class LoggerService extends Service {
         AsyncTask<Context, Void, String> task = new AsyncTask<Context, Void, String>() {
 			@Override
 			protected String doInBackground(Context... contexts) {
-		        Log.d(TAG, "task start");
 				Context context = contexts[0];
+				
+				LoggerBatteryStateListener.receive(context);
 				
 				SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
 				String outputFilename = pref.getString("OutputFilename", "sample.txt");
@@ -73,7 +111,6 @@ public class LoggerService extends Service {
 		        file.getParentFile().mkdirs();
 		 
 				try {
-					Log.d(TAG, "AppendMode: " + appendMode);
 					FileOutputStream fos = new FileOutputStream(file, appendMode);
 					OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 					BufferedWriter bw = new BufferedWriter(osw);
@@ -102,22 +139,7 @@ public class LoggerService extends Service {
     	};
     	task.execute(this);
 		
-        //çƒãNìÆ
-		int period = pref.getInt("Period", 60);
-
-        String intentAction = intent.getAction();
-        if(intentAction.equals("start") || intentAction.equals("repeat")){
-            alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + (period*1000), pendingIntent);
-            editor.putBoolean("ServiceRunning", true);
-            editor.commit();
-        }else if(intentAction.equals("stop")){
-            alarmManager.cancel(pendingIntent);
-            editor.putBoolean("ServiceRunning", false);
-            editor.commit();
-        }
-        Log.d(TAG, "onStartCommandFinish: " + ( System.currentTimeMillis() - current) );
-
-        return START_REDELIVER_INTENT;
+        return START_NOT_STICKY;
     }
 	
 	@Override
