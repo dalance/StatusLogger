@@ -61,21 +61,21 @@
 		<item >Battery Voltage</item>
 		<item >Battery Temperature</item>
 		<item >Battery Technology</item>
-        <item >Cdma asu Level</item>
-		<item >Cdma dBm</item>
-		<item >Cdma Ec/Io</item>
-		<item >Cdma Level</item>
-		<item >Evdo asu Level</item>
-		<item >Evdo dBm</item>
-		<item >Evdo Ec/Io</item>
-		<item >Evdo Level</item>
-		<item >Evdo SNR</item>
-		<item >Gsm asu Level</item>
-		<item >Gsm Bit Error Rate</item>
-		<item >Gsm dBm</item>
-		<item >Gsm Level</item>
-		<item >Gsm Signal Strength</item>
-        <item >LTE asu Level</item>
+        <item >CDMA asu Level</item>
+		<item >CDMA dBm</item>
+		<item >CDMA Ec/Io</item>
+		<item >CDMA Level</item>
+		<item >EV-DO asu Level</item>
+		<item >EV-DO dBm</item>
+		<item >EV-DO Ec/Io</item>
+		<item >EV-DO Level</item>
+		<item >EV-DO SNR</item>
+		<item >GSM asu Level</item>
+		<item >GSM Bit Error Rate</item>
+		<item >GSM dBm</item>
+		<item >GSM Level</item>
+		<item >GSM Signal Strength</item>
+		<item >LTE asu Level</item>
         <item >LTE CQI</item>
         <item >LTE dBm</item>
         <item >LTE Level</item>

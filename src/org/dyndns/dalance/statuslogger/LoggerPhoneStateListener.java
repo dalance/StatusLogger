@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
-import android.util.Log;
 
 public class LoggerPhoneStateListener extends PhoneStateListener {
 	private static final String TAG = LoggerPhoneStateListener.class.getSimpleName();
@@ -18,9 +17,7 @@ public class LoggerPhoneStateListener extends PhoneStateListener {
 	}
 	
 	@Override
-	public void onSignalStrengthsChanged(SignalStrength signalStrength) {
-		Log.d(TAG, "onSignalStrengthChanged");
-		
+	public void onSignalStrengthsChanged(SignalStrength signalStrength) {		
 		SharedPreferences pref = context.getSharedPreferences("Status", 0);
 		SharedPreferences.Editor editor = pref.edit();
         
@@ -30,7 +27,6 @@ public class LoggerPhoneStateListener extends PhoneStateListener {
 			try {
 				if(methodName.contains("get") && mthd.getReturnType() == int.class ) {
 					String key = methodName.replace("get", "");
-					Log.d(TAG, "key: " + key);
 					String ret = mthd.invoke(signalStrength, new Object[]{}).toString();
 			        editor.putString(key, ret);
 				}

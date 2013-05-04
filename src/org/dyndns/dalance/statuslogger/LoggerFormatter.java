@@ -19,8 +19,8 @@ public class LoggerFormatter {
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy'/'MM'/'dd");
 	    SimpleDateFormat timeFormat = new SimpleDateFormat("kk':'mm':'ss");
         
-		formatString = formatString.replace( "%[Time]",              timeFormat.format(date));
-		formatString = formatString.replace( "%[Date]",              dateFormat.format(date));
+		formatString = formatString.replace( "%[Time]",               timeFormat.format(date));
+		formatString = formatString.replace( "%[Date]",               dateFormat.format(date));
 		formatString = formatString.replace( "%[BatteryStatus]",      statusPref.getString("BatteryStatus",      "Unknown"));
 		formatString = formatString.replace( "%[BatteryHealth]",      statusPref.getString("BatteryHealth",      "Unknown"));
 		formatString = formatString.replace( "%[BatteryPlugged]",     statusPref.getString("BatteryPlugged",     "Unknown"));

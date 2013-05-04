@@ -11,5 +11,40 @@
     <string name="toggle_stop">停止中</string>
     <string name="label_period">周期[秒]</string>
     <string name="label_tag">タグ</string>
+    <string-array name="tag_description">
+        <item >時刻</item>
+        <item >日付</item>
+		<item >バッテリー 充放電状態</item>
+		<item >バッテリー 状態</item>
+		<item >バッテリー 接続先</item>
+		<item >バッテリー 有無</item>
+		<item >バッテリー 残量</item>
+		<item >バッテリー 総容量</item>
+		<item >バッテリー 電圧</item>
+		<item >バッテリー 温度</item>
+		<item >バッテリー 種類</item>
+        <item >CDMA asu Level</item>
+		<item >CDMA dBm</item>
+		<item >CDMA Ec/Io</item>
+		<item >CDMA Level</item>
+		<item >EV-DO asu Level</item>
+		<item >EV-DO dBm</item>
+		<item >EV-DO Ec/Io</item>
+		<item >EV-DO Level</item>
+		<item >EV-DO SNR</item>
+		<item >GSM asu Level</item>
+		<item >GSM Bit Error Rate</item>
+		<item >GSM dBm</item>
+		<item >GSM Level</item>
+		<item >GSM Signal Strength</item>
+        <item >LTE asu Level</item>
+        <item >LTE CQI</item>
+        <item >LTE dBm</item>
+        <item >LTE Level</item>
+        <item >LTE RSRP</item>
+        <item >LTE RSRQ</item>
+        <item >LTE RSSNR</item>
+        <item >LTE Signal Strength</item>
+    </string-array>
     
 </resources>

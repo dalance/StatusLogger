@@ -16,6 +16,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener, OnClickListener, TagDialog.SelectListner{
@@ -28,15 +29,20 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Init Update
+		//Intent intent = new Intent(MainActivity.this, LoggerService.class);
+		//intent.setAction("one-shot");
+		//startService(intent);
+
 		// default preference
 		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = pref.edit();
-		editor.putBoolean("ServiceRunning", pref.getBoolean("ServiceRunning", false                 ));
-		editor.putString ("FormatString",   pref.getString ("FormatString",   "%[LteSignalStrength]"));
-        editor.putString ("OutputFilename", pref.getString ("OutputFilename", "sample.txt"          ));
-        editor.putInt    ("Period",         pref.getInt    ("Period",         60                    ));
-        editor.putBoolean("AppendMode",     pref.getBoolean("AppendMode",     false                 ));
-        editor.putBoolean("AutoStart",      pref.getBoolean("AutoStart",      false                 ));
+		editor.putBoolean("ServiceRunning", pref.getBoolean("ServiceRunning", false                              ));
+		editor.putString ("FormatString",   pref.getString ("FormatString",   "%[Time]: Battery %[BatteryLevel]%"));
+        editor.putString ("OutputFilename", pref.getString ("OutputFilename", "StatusLogger/sample.txt"          ));
+        editor.putInt    ("Period",         pref.getInt    ("Period",         60                                 ));
+        editor.putBoolean("AppendMode",     pref.getBoolean("AppendMode",     false                              ));
+        editor.putBoolean("AutoStart",      pref.getBoolean("AutoStart",      false                              ));
         editor.commit();
 
         ServiceRunningPreferenceChangeListener listener = new ServiceRunningPreferenceChangeListener(this);
@@ -78,10 +84,18 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		//getMenuInflater().inflate(R.menu.main, menu);
+		return false;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		String sampleString = LoggerFormatter.format(this);
+		TextView textView = (TextView)findViewById(R.id.textViewSample);
+        textView.setText(sampleString);
+	}
+	
 	@Override
 	public void onCheckedChanged(CompoundButton view, boolean isChecked) {
 		switch(view.getId()){
@@ -135,6 +149,5 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		int end = editText.getSelectionEnd();
 		Editable editable = editText.getText();
 		editable.replace( Math.min( start, end ), Math.max( start, end ), str );
-		//Toast.makeText(this, str, Toast.LENGTH_LONG).show();		
 	}
 }

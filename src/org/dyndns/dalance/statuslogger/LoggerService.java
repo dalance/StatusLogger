@@ -63,8 +63,7 @@ public class LoggerService extends Service {
     
 	@Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        long current = System.currentTimeMillis();
-		Log.d(TAG, "onStartCommand");
+        Log.d(TAG, "LogUpdateStart: " + System.currentTimeMillis());
 
 		//çƒãNìÆó\ñÒ
 		int period = pref.getInt("Period", 60);
@@ -87,8 +86,8 @@ public class LoggerService extends Service {
         	} else {
         		return START_NOT_STICKY;
         	}
+        }else if(intentAction.equals("one_shot")){
         }
-        Log.d(TAG, "onStartCommandFinish: " + ( System.currentTimeMillis() - current) );
 
 
         //èàóùñ{ëÃ
@@ -106,7 +105,7 @@ public class LoggerService extends Service {
 				String outputFilename = pref.getString("OutputFilename", "sample.txt");
 				Boolean appendMode    = pref.getBoolean("AppendMode", true);
 
-				String filePath = Environment.getExternalStorageDirectory() + "/StatusLogger/" + outputFilename;
+				String filePath = Environment.getExternalStorageDirectory() + "/" + outputFilename;
 		        File file = new File(filePath);
 		        file.getParentFile().mkdirs();
 		 
@@ -128,7 +127,7 @@ public class LoggerService extends Service {
 					e.printStackTrace();
 				}
 				
-		        Log.d(TAG, "task finish");	            
+		        Log.d(TAG, "LogUpdateFinish: " + System.currentTimeMillis());
 		        return "";
 			}
 
