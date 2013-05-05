@@ -1,4 +1,4 @@
-package org.dyndns.dalance.statuslogger;
+package org.dyndns.dalance.statuslogger.logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class LoggerFormatter {
-	private static final String TAG = LoggerFormatter.class.getSimpleName();
+public class StringFormatter {
+	private static final String TAG = StringFormatter.class.getSimpleName();
 	
 	public static String format(Context context) {
 		SharedPreferences defaultPref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -52,6 +52,14 @@ public class LoggerFormatter {
 		formatString = formatString.replace( "%[LteRsrq]",            statusPref.getString("LteRsrq",            "Unknown"));
 		formatString = formatString.replace( "%[LteRssnr]",           statusPref.getString("LteRssnr",           "Unknown"));
 		formatString = formatString.replace( "%[LteSignalStrength]",  statusPref.getString("LteSignalStrenght",  "Unknown"));
+		formatString = formatString.replace( "%[MobileRxBytes]",      statusPref.getString("MobileRxBytes",      "Unknown"));
+		formatString = formatString.replace( "%[MobileTxBytes]",      statusPref.getString("MobileTxBytes",      "Unknown"));
+		formatString = formatString.replace( "%[MobileRxPackets]",    statusPref.getString("MobileRxPackets",    "Unknown"));
+		formatString = formatString.replace( "%[MobileTxPackets]",    statusPref.getString("MobileTxPackets",    "Unknown"));
+		formatString = formatString.replace( "%[TotalRxBytes]",       statusPref.getString("TotalRxBytes",       "Unknown"));
+		formatString = formatString.replace( "%[TotalTxBytes]",       statusPref.getString("TotalTxBytes",       "Unknown"));
+		formatString = formatString.replace( "%[TotalRxPackets]",     statusPref.getString("TotalRxPackets",     "Unknown"));
+		formatString = formatString.replace( "%[TotalTxPackets]",     statusPref.getString("TotalTxPackets",     "Unknown"));
 
 		return formatString;
 	}

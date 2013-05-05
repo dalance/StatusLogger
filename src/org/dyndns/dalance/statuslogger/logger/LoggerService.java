@@ -1,4 +1,4 @@
-package org.dyndns.dalance.statuslogger;
+package org.dyndns.dalance.statuslogger.logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -31,7 +32,7 @@ public class LoggerService extends Service {
 
 	private TelephonyManager telephonyManager;
 	private AlarmManager alarmManager;
-	private LoggerPhoneStateListener phoneStateListener;
+	private PhoneStateUpdater phoneStateUpdater;
 	private SharedPreferences pref;
 	private SharedPreferences.Editor editor;
 	private PendingIntent pendingIntent;
@@ -49,7 +50,7 @@ public class LoggerService extends Service {
 	@Override
     public void onCreate() {
 		Log.d(TAG, "onCreate");
-    	phoneStateListener   = new LoggerPhoneStateListener(this);
+    	phoneStateUpdater    = new PhoneStateUpdater(this);
     	alarmManager         = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         telephonyManager     = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);		
 		pref                 = PreferenceManager.getDefaultSharedPreferences(this);
@@ -91,15 +92,16 @@ public class LoggerService extends Service {
 
 
         //èàóùñ{ëÃ
-    	telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
-        telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
+    	telephonyManager.listen(phoneStateUpdater, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+        telephonyManager.listen(phoneStateUpdater, PhoneStateListener.LISTEN_NONE);
 
         AsyncTask<Context, Void, String> task = new AsyncTask<Context, Void, String>() {
 			@Override
 			protected String doInBackground(Context... contexts) {
 				Context context = contexts[0];
 				
-				LoggerBatteryStateListener.receive(context);
+				BatteryStateUpdater.update(context);
+				TrafficStateUpdater.update(context);
 				
 				SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
 				String outputFilename = pref.getString("OutputFilename", "sample.txt");
@@ -113,7 +115,7 @@ public class LoggerService extends Service {
 					FileOutputStream fos = new FileOutputStream(file, appendMode);
 					OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 					BufferedWriter bw = new BufferedWriter(osw);
-			        bw.write(LoggerFormatter.format(context) + "\n");
+			        bw.write(StringFormatter.format(context) + "\n");
 			        bw.flush();
 			        bw.close();
 			    } catch (FileNotFoundException e) {

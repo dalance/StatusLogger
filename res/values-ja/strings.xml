@@ -45,6 +45,14 @@
         <item >LTE RSRQ</item>
         <item >LTE RSSNR</item>
         <item >LTE Signal Strength</item>
+        <item >受信バイト数（モバイルネットワークのみ）</item>
+		<item >送信バイト数（モバイルネットワークのみ）</item>
+		<item >受信パケット数（モバイルネットワークのみ）</item>
+		<item >送信パケット数（モバイルネットワークのみ）</item>
+        <item >受信バイト数</item>
+		<item >送信バイト数</item>
+		<item >受信パケット数</item>
+		<item >送信パケット数</item>
     </string-array>
     
 </resources>

@@ -1,17 +1,15 @@
-package org.dyndns.dalance.statuslogger;
+package org.dyndns.dalance.statuslogger.logger;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.BatteryManager;
-import android.util.Log;
 
-public class LoggerBatteryStateListener {
-	private static final String TAG = LoggerBatteryStateListener.class.getSimpleName();
+public class BatteryStateUpdater {
+	private static final String TAG = BatteryStateUpdater.class.getSimpleName();
 	
-	public static void receive(Context context) {
+	public static void update(Context context) {
 		Intent intent = context.getApplicationContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		String action = intent.getAction();
 		if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {

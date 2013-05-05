@@ -48,6 +48,14 @@
         <item >%[LteRsrq]</item>
         <item >%[LteRssnr]</item>
         <item >%[LteSignalStrength]</item>
+        <item >%[MobileRxBytes]</item>
+		<item >%[MobileTxBytes]</item>
+		<item >%[MobileRxPackets]</item>
+		<item >%[MobileTxPackets]</item>
+		<item >%[TotalRxBytes]</item>
+		<item >%[TotalTxBytes]</item>
+		<item >%[TotalRxPackets]</item>
+		<item >%[TotalTxPackets]</item>        
     </string-array>
     <string-array name="tag_description">
         <item >Time</item>
@@ -83,6 +91,14 @@
         <item >LTE RSRQ</item>
         <item >LTE RSSNR</item>
         <item >LTE Signal Strength</item>
-    </string-array>
+        <item >Rx Bytes over Mobile Network</item>
+		<item >Tx Bytes over Mobile Network</item>
+		<item >Rx Packets over Mobile Network</item>
+		<item >Tx Packets over Mobile Network</item>
+        <item >Total Rx Bytes</item>
+		<item >Total Tx Bytes</item>
+		<item >Total Rx Packets</item>
+		<item >Total Tx Packets</item>
+        </string-array>
     	
 </resources>

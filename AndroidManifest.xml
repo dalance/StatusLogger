@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:name="App" android:debuggable="false">
+        android:theme="@style/AppTheme" android:name="App" android:debuggable="true">
         <activity
             android:name="org.dyndns.dalance.statuslogger.MainActivity"
             android:label="@string/app_name" >
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="LoggerService"></service>
+        <service android:name=".logger.LoggerService"></service>
         <receiver android:name="StartReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

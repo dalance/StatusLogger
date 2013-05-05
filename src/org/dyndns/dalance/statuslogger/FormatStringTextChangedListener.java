@@ -1,5 +1,7 @@
 package org.dyndns.dalance.statuslogger;
 
+import org.dyndns.dalance.statuslogger.logger.StringFormatter;
+
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -24,7 +26,7 @@ public class FormatStringTextChangedListener implements TextWatcher {
         editor.putString("FormatString", s.toString());
 		editor.commit();
 		
-		String sampleString = LoggerFormatter.format(activity);
+		String sampleString = StringFormatter.format(activity);
 		TextView textView = (TextView)activity.findViewById(R.id.textViewSample);
         textView.setText(sampleString);
 	}

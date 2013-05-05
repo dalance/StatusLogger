@@ -1,4 +1,4 @@
-package org.dyndns.dalance.statuslogger;
+package org.dyndns.dalance.statuslogger.logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,11 +8,11 @@ import android.content.SharedPreferences;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 
-public class LoggerPhoneStateListener extends PhoneStateListener {
-	private static final String TAG = LoggerPhoneStateListener.class.getSimpleName();
+public class PhoneStateUpdater extends PhoneStateListener {
+	private static final String TAG = PhoneStateUpdater.class.getSimpleName();
 	private Context context;
 	
-	LoggerPhoneStateListener (Context context_) {
+	PhoneStateUpdater (Context context_) {
 		context = context_;	
 	}
 	

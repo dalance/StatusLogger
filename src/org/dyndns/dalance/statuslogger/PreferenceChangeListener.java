@@ -6,11 +6,11 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.util.Log;
 import android.widget.ToggleButton;
 
-public class ServiceRunningPreferenceChangeListener implements	OnSharedPreferenceChangeListener {
-	private static final String TAG = ServiceRunningPreferenceChangeListener.class.getSimpleName();
+public class PreferenceChangeListener implements OnSharedPreferenceChangeListener {
+	private static final String TAG = PreferenceChangeListener.class.getSimpleName();
 	private Activity activity;
 	
-	ServiceRunningPreferenceChangeListener(Activity activity_) {
+	PreferenceChangeListener(Activity activity_) {
 		activity = activity_;	
 	}
 

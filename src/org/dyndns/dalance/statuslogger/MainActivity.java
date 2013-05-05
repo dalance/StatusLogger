@@ -1,5 +1,8 @@
 package org.dyndns.dalance.statuslogger;
 
+import org.dyndns.dalance.statuslogger.logger.StringFormatter;
+import org.dyndns.dalance.statuslogger.logger.LoggerService;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -29,11 +32,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Init Update
-		//Intent intent = new Intent(MainActivity.this, LoggerService.class);
-		//intent.setAction("one-shot");
-		//startService(intent);
-
 		// default preference
 		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = pref.edit();
@@ -45,7 +43,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
         editor.putBoolean("AutoStart",      pref.getBoolean("AutoStart",      false                              ));
         editor.commit();
 
-        ServiceRunningPreferenceChangeListener listener = new ServiceRunningPreferenceChangeListener(this);
+        PreferenceChangeListener listener = new PreferenceChangeListener(this);
         pref.registerOnSharedPreferenceChangeListener(listener);
         
 		// init widget		
@@ -91,7 +89,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	@Override
 	public void onResume() {
 		super.onResume();
-		String sampleString = LoggerFormatter.format(this);
+		String sampleString = StringFormatter.format(this);
 		TextView textView = (TextView)findViewById(R.id.textViewSample);
         textView.setText(sampleString);
 	}

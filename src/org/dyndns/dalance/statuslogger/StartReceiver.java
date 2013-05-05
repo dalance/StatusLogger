@@ -1,5 +1,7 @@
 package org.dyndns.dalance.statuslogger;
 
+import org.dyndns.dalance.statuslogger.logger.LoggerService;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
