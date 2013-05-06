@@ -9,7 +9,6 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.AlarmManager;
@@ -56,8 +55,7 @@ public class LoggerService extends Service {
 		pref                 = PreferenceManager.getDefaultSharedPreferences(this);
 		editor               = pref.edit();
 
-		Intent i = new Intent();
-        i.setClassName("org.dyndns.dalance.statuslogger.logger", "org.dyndns.dalance.statuslogger.logger.LoggerService");
+		Intent i = new Intent(LoggerService.this, LoggerService.class);
         i.setAction("repeat");
         pendingIntent = PendingIntent.getService(this, 0, i, 0);
 	}
@@ -69,7 +67,7 @@ public class LoggerService extends Service {
 		//çƒãNìÆó\ñÒ
 		int period = pref.getInt("Period", 60);
 		Boolean autoStart= pref.getBoolean("AutoStart", false);
-
+		
         String intentAction = intent.getAction();
         if(intentAction.equals("start") || intentAction.equals("repeat")){
             alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + (period*1000), pendingIntent);
@@ -102,6 +100,7 @@ public class LoggerService extends Service {
 				
 				BatteryStateUpdater.update(context);
 				TrafficStateUpdater.update(context);
+				TimeStateUpdater.update(context);
 				
 				SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
 				String outputFilename = pref.getString("OutputFilename", "sample.txt");

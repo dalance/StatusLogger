@@ -12,8 +12,30 @@
     <string name="label_period">周期[秒]</string>
     <string name="label_tag">タグ</string>
     <string-array name="tag_description">
-        <item >時刻</item>
-        <item >日付</item>
+		<item >日付（年/月/日）</item>
+		<item >時刻（時:分:秒）</item>
+		<item >年</item>
+		<item >月</item>
+		<item >日</item>
+		<item >時</item>
+		<item >分</item>
+		<item >秒</item>
+		<item >稼働時間（年/月/日）</item>
+		<item >稼働時間（時:分:秒）</item>
+		<item >稼働時間（年）</item>
+		<item >稼働時間（月）</item>
+		<item >稼働時間（日）</item>
+		<item >稼働時間（時）</item>
+		<item >稼働時間（分）</item>
+		<item >稼働時間（秒）</item>
+		<item >稼働実時間（年/月/日）</item>
+		<item >稼働実時間（時:分:秒）</item>
+		<item >稼働実時間（年）</item>
+		<item >稼働実時間（月）</item>
+		<item >稼働実時間（日）</item>
+		<item >稼働実時間（時）</item>
+		<item >稼働実時間（分）</item>
+		<item >稼働実時間（秒）</item>
 		<item >バッテリー 充放電状態</item>
 		<item >バッテリー 状態</item>
 		<item >バッテリー 接続先</item>

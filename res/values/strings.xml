@@ -15,8 +15,30 @@
     <string name="label_period">Period[second]</string>
     <string name="label_tag">Tag</string>
     <string-array name="defined_tags">
-        <item >%[Time]</item>
-        <item >%[Date]</item>
+		<item >%[Date]</item>
+		<item >%[Time]</item>
+		<item >%[Year]</item>
+		<item >%[Month]</item>
+		<item >%[Day]</item>
+		<item >%[Hour]</item>
+		<item >%[Min]</item>
+		<item >%[Sec]</item>
+		<item >%[UptimeDate]</item>
+		<item >%[UptimeTime]</item>
+		<item >%[UptimeYear]</item>
+		<item >%[UptimeMonth]</item>
+		<item >%[UptimeDay]</item>
+		<item >%[UptimeHour]</item>
+		<item >%[UptimeMin]</item>
+		<item >%[UptimeSec]</item>
+		<item >%[RealUptimeDate]</item>
+		<item >%[RealUptimeTime]</item>
+		<item >%[RealUptimeYear]</item>
+		<item >%[RealUptimeMonth]</item>
+		<item >%[RealUptimeDay]</item>
+		<item >%[RealUptimeHour]</item>
+		<item >%[RealUptimeMin]</item>
+		<item >%[RealUptimeSec]</item>
 		<item >%[BatteryStatus]</item>
 		<item >%[BatteryHealth]</item>
 		<item >%[BatteryPlugged]</item>
@@ -58,9 +80,31 @@
 		<item >%[TotalTxPackets]</item>        
     </string-array>
     <string-array name="tag_description">
-        <item >Time</item>
-        <item >Date</item>
-		<item >Battery Status</item>
+		<item >Date(year/month/day)</item>
+		<item >Time(hour:minute:second)</item>
+		<item >Year</item>
+		<item >Month</item>
+		<item >Day</item>
+		<item >Hour</item>
+		<item >Minute</item>
+		<item >Second</item>
+		<item >Uptime by Date(year/month/day)</item>
+		<item >Uptime by Time(hour:minute:second)</item>
+		<item >Uptime by Year</item>
+		<item >Uptime by Month</item>
+		<item >Uptime by Day</item>
+		<item >Uptime by Hour</item>
+		<item >Uptime by Minute</item>
+		<item >Uptime by Second</item>
+		<item >Real Uptime by Date(year/month/day)</item>
+		<item >Real Uptime by Time(hour:minute:second)</item>
+		<item >Real Uptime by Year</item>
+		<item >Real Uptime by Month</item>
+		<item >Real Uptime by Day</item>
+		<item >Real Uptime by Hour</item>
+		<item >Real Uptime by Minute</item>
+		<item >Real Uptime by Second</item>
+        <item >Battery Status</item>
 		<item >Battery Health</item>
 		<item >Battery Plugged</item>
 		<item >Battery Present</item>

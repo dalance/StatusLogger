@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".logger.LoggerService"></service>
+        <service android:name="org.dyndns.dalance.statuslogger.logger.LoggerService"></service>
         <receiver android:name="StartReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
