@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class StringFormatter {
+	@SuppressWarnings("unused")
 	private static final String TAG = StringFormatter.class.getSimpleName();
 	
 	public static String format(Context context) {

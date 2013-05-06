@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.TrafficStats;
 
 public class TrafficStateUpdater {
+	@SuppressWarnings("unused")
 	private static final String TAG = TrafficStateUpdater.class.getSimpleName();
 	
 	public static void update(Context context) {

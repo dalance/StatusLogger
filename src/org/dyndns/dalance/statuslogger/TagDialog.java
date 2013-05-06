@@ -1,8 +1,5 @@
 package org.dyndns.dalance.statuslogger;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -21,7 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class TagDialog extends DialogFragment {
+	@SuppressWarnings("unused")
 	private static final String TAG = TagDialog.class.getSimpleName();
+
 	public  static final String TITLE = "title";
 	public  static final String LISTENER = "listener";
 	

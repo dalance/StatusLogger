@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.BatteryManager;
 
 public class BatteryStateUpdater {
+	@SuppressWarnings("unused")
 	private static final String TAG = BatteryStateUpdater.class.getSimpleName();
 	
 	public static void update(Context context) {

@@ -9,6 +9,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 
 public class PhoneStateUpdater extends PhoneStateListener {
+	@SuppressWarnings("unused")
 	private static final String TAG = PhoneStateUpdater.class.getSimpleName();
 	private Context context;
 	

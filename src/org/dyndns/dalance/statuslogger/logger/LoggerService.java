@@ -57,7 +57,7 @@ public class LoggerService extends Service {
 		editor               = pref.edit();
 
 		Intent i = new Intent();
-        i.setClassName("org.dyndns.dalance.statuslogger", "org.dyndns.dalance.statuslogger.LoggerService");
+        i.setClassName("org.dyndns.dalance.statuslogger.logger", "org.dyndns.dalance.statuslogger.logger.LoggerService");
         i.setAction("repeat");
         pendingIntent = PendingIntent.getService(this, 0, i, 0);
 	}
